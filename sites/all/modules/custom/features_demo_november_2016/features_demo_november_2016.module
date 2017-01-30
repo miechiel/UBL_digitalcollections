@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Features demo november 2016 feature.
+ */
+
+include_once 'features_demo_november_2016.features.inc';
