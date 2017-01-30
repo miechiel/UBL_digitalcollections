@@ -1,0 +1,4 @@
+name = "Demo frontpage"
+description = "Provides blocks to fill frontpage"
+package = "Custom"
+core = "7.x"

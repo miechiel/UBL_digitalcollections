@@ -1,0 +1,318 @@
+<?php
+//for organisation, includes are kept in the includes folder
+module_load_include('inc', 'demo_frontpage', '/includes/demo_frontpage_block_content');
+module_load_include('inc', 'demo_frontpage', '/includes/demo_webexpositions_block_content');
+module_load_include('inc', 'demo_frontpage', '/includes/demo_collection_groups_block_content');
+
+/**
+ * Implements hook_block_info().
+ */
+function demo_frontpage_block_info() {
+  $blocks['demo_frontpage_block'] = array(
+    'info' => t('Demo features'),
+  );
+  $blocks['demo_webexpositions_block'] = array(
+    'info' => t('Demo webexpositions'),
+  );
+  $blocks['demo_collection_groups_block'] = array(
+    'info' => t('Demo collection groups'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function demo_frontpage_block_configure($delta='') {
+  $form = array();
+
+  switch($delta) {
+    case 'demo_frontpage_block' :
+      $form['button-more'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('More button'),
+        '#tree' => TRUE,
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+      );
+      $form['button-more']['text'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Text'),
+        '#default_value' => variable_get('demo_frontpage_more_text','all collections'),
+      );
+      $form['button-more']['link'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link'),
+        '#default_value' => variable_get('demo_frontpage_more_link','/islandora/search/?type=dismax'),
+      );
+      //Create 6 fieldsets with an image field, title and descripion
+      $d = 0;
+      While ($d < 5) {
+        $form['img'.$d] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Image entry '.($d+1)),
+          '#weight' => ($d+10),
+          '#tree' => TRUE,
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+        );
+        $form['img'.$d]['file'] = array(
+          '#name' => 'block_image',
+          '#type' => 'managed_file',
+          '#title' => t('Choose an Image File'),
+          '#description' => t('Select an Image.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+          '#default_value' => variable_get('demo_frontpage_image_'.$d.'_fid', ''),
+          '#upload_location' => 'public://images/',
+          '#upload_validators' => array(
+            'file_validate_extensions' => array('gif png jpg jpeg'),
+          ),
+        );
+        $form['img'.$d]['image_title'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Title'),
+          '#default_value' => variable_get('demo_frontpage_title_'.$d, ''),
+        );
+        $form['img'.$d]['image_description'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Description'),
+          '#default_value' => variable_get('demo_frontpage_desc_'.$d, ''),
+        );
+        $form['img'.$d]['image_link'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Link'),
+          '#default_value' => variable_get('demo_frontpage_link_'.$d, ''),
+        );
+        $d++;
+      }
+      break;
+    case 'demo_webexpositions_block' :
+      $form['button-more'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('More button'),
+        '#tree' => TRUE,
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+      );
+      $form['button-more']['text'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Text'),
+        '#default_value' => variable_get('demo_webexpositions_more_text','all expositions'),
+      );
+      $form['button-more']['link'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link'),
+        '#default_value' => variable_get('demo_webexpositions_more_link','/islandora/search/?type=dismax'),
+      );
+      //Create 6 fieldsets with an image field, title and descripion
+      $d = 0;
+      While ($d < 5) {
+        $form['img'.$d] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Image entry '.($d+1)),
+          '#weight' => ($d+10),
+          '#tree' => TRUE,
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+        );
+        $form['img'.$d]['file'] = array(
+          '#name' => 'block_image',
+          '#type' => 'managed_file',
+          '#title' => t('Choose an Image File'),
+          '#description' => t('Select an Image.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+          '#default_value' => variable_get('demo_webexpositions_image_'.$d.'_fid', ''),
+          '#upload_location' => 'public://images/',
+          '#upload_validators' => array(
+            'file_validate_extensions' => array('gif png jpg jpeg'),
+          ),
+        );
+        $form['img'.$d]['image_title'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Title'),
+          '#default_value' => variable_get('demo_webexpositions_title_'.$d, ''),
+        );
+        $form['img'.$d]['image_description'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Description'),
+          '#default_value' => variable_get('demo_webexpositions_desc_'.$d, ''),
+        );
+        $form['img'.$d]['image_link'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Link'),
+          '#default_value' => variable_get('demo_webexpositions_link_'.$d, ''),
+        );
+        $d++;
+      }
+      break;
+    case 'demo_collection_groups_block' :
+      $form['button-more'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('More button'),
+        '#tree' => TRUE,
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+      );
+      $form['button-more']['text'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Text'),
+        '#default_value' => variable_get('demo_collection_groups_more_text','all expositions'),
+      );
+      $form['button-more']['link'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link'),
+        '#default_value' => variable_get('demo_collection_groups_more_link','/islandora/search/?type=dismax'),
+      );
+      //Create 6 fieldsets with an image field, title and descripion
+      $d = 0;
+      While ($d < 10) {
+        $form['img'.$d] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Image entry '.($d+1)),
+          '#weight' => ($d+10),
+          '#tree' => TRUE,
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+        );
+        $form['img'.$d]['file'] = array(
+          '#name' => 'block_image',
+          '#type' => 'managed_file',
+          '#title' => t('Choose an Image File'),
+          '#description' => t('Select an Image.  Only *.gif, *.png, *.jpg, and *.jpeg images allowed.'),
+          '#default_value' => variable_get('demo_collection_groups_image_'.$d.'_fid', ''),
+          '#upload_location' => 'public://images/',
+          '#upload_validators' => array(
+            'file_validate_extensions' => array('gif png jpg jpeg'),
+          ),
+        );
+        $form['img'.$d]['image_title'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Title'),
+          '#default_value' => variable_get('demo_collection_groups_title_'.$d, ''),
+        );
+        $form['img'.$d]['image_link'] = array(
+          '#type' => 'textfield',
+          '#title' => t('Link'),
+          '#default_value' => variable_get('demo_collection_groups_link_'.$d, ''),
+        );
+        $d++;
+      }
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function demo_frontpage_block_save($delta = '', $edit = array()) {
+  switch($delta) {
+    case 'demo_frontpage_block' :
+      variable_set('demo_frontpage_more_text_', $edit['button-more']['text']);
+      variable_set('demo_frontpage_more_link_', $edit['button-more']['link']);
+      $d=0;
+      While ($d < 5) {
+        // Save the file, set it to a permanent state, set a FID variable
+        $file = file_load($edit['img'.$d]['file']);
+        if ($file) {
+          $file->status = FILE_STATUS_PERMANENT;
+          file_save($file);
+          $block = block_load('demo_frontpage', $delta);
+          file_usage_add($file, 'demo_frontpage', 'block', $block->bid);
+          variable_set('demo_frontpage_image_' . $d . '_fid', $file->fid);
+        }
+
+        // Save the text fields to variables
+        variable_set('demo_frontpage_title_'.$d, $edit['img'.$d]['image_title']);
+        variable_set('demo_frontpage_desc_'.$d, $edit['img'.$d]['image_description']);
+        variable_set('demo_frontpage_link_'.$d, $edit['img'.$d]['image_link']);
+        $d++;
+      }
+      break;
+    case 'demo_webexpositions_block' :
+      variable_set('demo_webexpositions_more_text_', $edit['button-more']['text']);
+      variable_set('demo_webexpositions_more_link_', $edit['button-more']['link']);
+      $d=0;
+      While ($d < 5) {
+
+        // Save the file, set it to a permanent state, set a FID variable
+        $file = file_load($edit['img'.$d]['file']);
+        if ($file) {
+          $file->status = FILE_STATUS_PERMANENT;
+          file_save($file);
+          $block = block_load('demo_frontpage', $delta);
+          file_usage_add($file, 'demo_frontpage', 'block', $block->bid);
+          variable_set('demo_webexpositions_image_' . $d . '_fid', $file->fid);
+        }
+
+        // Save the text fields to variables
+        variable_set('demo_webexpositions_title_'.$d, $edit['img'.$d]['image_title']);
+        variable_set('demo_webexpositions_desc_'.$d, $edit['img'.$d]['image_description']);
+        variable_set('demo_webexpositions_link_'.$d, $edit['img'.$d]['image_link']);
+        $d++;
+      }
+      break;
+    case 'demo_collection_groups_block' :
+      variable_set('demo_collection_groups_more_text_', $edit['button-more']['text']);
+      variable_set('demo_collection_groups_more_link_', $edit['button-more']['link']);
+      $d=0;
+      While ($d < 10) {
+
+        // Save the file, set it to a permanent state, set a FID variable
+        $file = file_load($edit['img'.$d]['file']);
+        if ($file) {
+          $file->status = FILE_STATUS_PERMANENT;
+          file_save($file);
+          $block = block_load('demo_frontpage', $delta);
+          file_usage_add($file, 'demo_frontpage', 'block', $block->bid);
+          variable_set('demo_collection_groups_image_' . $d . '_fid', $file->fid);
+        }
+
+        // Save the text fields to variables
+        variable_set('demo_collection_groups_title_'.$d, $edit['img'.$d]['image_title']);
+        variable_set('demo_collection_groups_link_'.$d, $edit['img'.$d]['image_link']);
+
+        $d++;
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function demo_frontpage_block_view($delta = '') {
+  switch ($delta) {
+    case 'demo_frontpage_block':
+      $block['content'] = demo_frontpage_block_content();
+      break;
+    case 'demo_webexpositions_block':
+      $block['content'] = demo_webexpositions_block_content();
+      break;
+    case 'demo_collection_groups_block':
+      $block['content'] = demo_collection_groups_block_content();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function demo_frontpage_theme() {
+  $module_path = drupal_get_path('module', 'demo_frontpage');
+  $base = array(
+    'path' => "$module_path/templates",
+  );
+  return array(
+    'demo_frontpage_block_content' => $base + array(
+        'template' => 'demo_frontpage_block',
+        'variables' => array('items' => NULL,),
+      ),
+    'demo_collection_groups_block_content' => $base + array(
+        'template' => 'demo_frontpage_collection_block',
+        'variables' => array('items' => NULL,),
+      ),
+    'demo_webexpositions_block_content' => $base + array(
+        'template' => 'demo_frontpage_expositions_block',
+        'variables' => array('items' => NULL,),
+      ),
+  );
+}
