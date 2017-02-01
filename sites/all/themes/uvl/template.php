@@ -37,7 +37,7 @@ function uvl_menu_link($variables) {
       return $output;
     }
     //Inject block content when url query contains block
-    if (isset($element['#original_link']['options']['query']['block'])) {
+    if (isset($element['#original_link']['options']['query'])) {
       $output = render_block_content(
         $element['#original_link']['options']['query']['block'],
         $element['#original_link']['options']['query']['delta']);
@@ -88,111 +88,6 @@ function render_block_content($module, $delta) {
         return is_array($build['content']) ? render($build['content']) : $build['content'];
       }
     }
-  }
-  return $output;
-}
-
-/**
- * Theme_preprocess_image
- * @param array $variables
- */
-function uvl_preprocess_image(&$variables) {
-  //No other way than check for image path to determine if it is a solr search page.
-
-  if(strpos($variables['path'], 'solr_nav')) {
-    $variables['attributes']['class'][] = 'dc-object-fit';
-  }
-}
-
-/**
- * Theme_item_list
- * @param array $variables
- */
-function uvl_item_list(&$variables) {
-
-  //change classes in search results page list
-  if (isset($variables['attributes']['class']) &&
-    $variables['attributes']['class'][0] == 'pager') {
-      $variables['attributes']['class'][] = 'dc-searchresults-pager';
-      foreach ($variables['items'] as $key => $var)
-      {
-        if ($var['class'][0] == 'first') {
-          $variables['items'][$key]['class'][] = 'dc-pager-first';
-        }
-        if ($var['class'][0] == 'pager-current') {
-          $variables['items'][$key]['class'][] = 'dc-pager-active';
-        }
-        if ($var['class'][0] == 'pager-next') {
-          $variables['items'][$key]['class'][] = 'dc-pager-next';
-        }
-        if ($var['class'][0] == 'pager-previous') {
-          $variables['items'][$key]['class'][] = 'dc-pager-prev';
-        }
-        if ($var['class'][0] == 'pager-first') {
-          $variables['items'][$key]['class'][] = 'dc-pager-first';
-        }
-        if ($var['class'][0] == 'pager-last') {
-          $variables['items'][$key]['class'][] = 'dc-pager-last';
-        }
-      }
-  }
-  //Change class for search results switch list
-  if (isset($variables['attributes']['class']) &&
-    $variables['attributes']['class'] == 'islandora-solr-display') {
-    $variables['attributes']['class'] = 'dc-searchresults-tools';
-  }
-
-  $items = $variables['items'];
-  $title = $variables['title'];
-  $type = $variables['type'];
-  $attributes = $variables['attributes'];
-
-  // Only output the list container and title, if there are any list items.
-  // Check to see whether the block title exists before adding a header.
-  // Empty headers are not semantic and present accessibility challenges.
-  $output = '';
-  if (isset($title) && $title !== '') {
-    $output .= '<h3>' . $title . '</h3>';
-  }
-
-  if (!empty($items)) {
-    $output .= "<$type" . drupal_attributes($attributes) . '>';
-    $num_items = count($items);
-    $i = 0;
-    foreach ($items as $item) {
-      $attributes = array();
-      $children = array();
-      $data = '';
-      $i++;
-      if (is_array($item)) {
-        foreach ($item as $key => $value) {
-          if ($key == 'data') {
-            $data = $value;
-          }
-          elseif ($key == 'children') {
-            $children = $value;
-          }
-          else {
-            $attributes[$key] = $value;
-          }
-        }
-      }
-      else {
-        $data = $item;
-      }
-      if (count($children) > 0) {
-        // Render nested list.
-        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
-      }
-      if ($i == 1) {
-        $attributes['class'][] = 'first';
-      }
-      if ($i == $num_items) {
-        $attributes['class'][] = 'last';
-      }
-      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
-    }
-    $output .= "</$type>";
   }
   return $output;
 }

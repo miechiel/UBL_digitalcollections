@@ -53,7 +53,7 @@
       <?php if ($parent_collections): ?>
       <div>
         <h3 class="dc-sidebox-header"><?php print t('In collections'); ?></h3>
-        <?php print t('This item can be found in the following collections:'); ?>
+        This item can be found in the following collections:
         <ul class="dc-related-searches">
           <?php foreach ($parent_collections as $collection): ?>
             <li><?php print l($collection->label, "islandora/object/{$collection->id}"); ?></li>

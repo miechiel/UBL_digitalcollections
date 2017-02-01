@@ -70,13 +70,6 @@
  *
  * @ingroup themeable
  */
-
-//Hack to force islandora compound object navigation in main content region to bottom position
-if (isset($page['content']['islandora_compound_object_compound_navigation'])) {
-  $compound = $page['content']['islandora_compound_object_compound_navigation'];
-  unset($page['content']['islandora_compound_object_compound_navigation']);
-  $page['content']['islandora_compound_object_compound_navigation'] = $compound;
-}
 ?>
 
 <div id="page-wrapper"><div id="page">
@@ -163,14 +156,12 @@ if (isset($page['content']['islandora_compound_object_compound_navigation'])) {
             <?php print render($title_prefix); ?>
             <?php if ($title): ?><h2 class="title" id="page-title"><?php print $title ?></h2><?php endif; ?>
             <?php print render($title_suffix); ?>
-
             <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
             <?php print render($page['help']); ?>
             <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
             <?php print render($page['content']);  ?>
             <?php print render($page['content_bottom']);  ?>
             <?php print $feed_icons; ?>
-
           </div></div> <!-- /.section, /.dc-content -->
 
 

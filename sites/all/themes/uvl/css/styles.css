@@ -1744,6 +1744,164 @@ div#BRpage {
   text-align: center;
 }
 
+.dc-grid {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  list-style-type: none;
+  padding: 0;
+}
+.dc-grid .dc-grid-item {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  float: none;
+  height: auto;
+  min-width: 200px;
+  width: 30%;
+  margin: 0;
+  margin: 10px;
+}
+.dc-grid .dc-grid-more {
+  -webkit-flex: 0 0 150px;
+  flex: 0 0 150px;
+}
+.dc-grid .dc-grid-more .dc-grid-pic {
+  text-align: center;
+  font-family: "Vestula";
+  font-size: 1.3em;
+  line-height: 1.25em;
+  color: white;
+  background-color: #999;
+}
+.dc-grid .dc-grid-more span {
+  display: block;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 1;
+}
+.dc-grid h4 {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  color: #333;
+}
+.dc-grid a {
+  display: block;
+  overflow: hidden;
+  color: #444;
+}
+.dc-grid .dc-grid-pic {
+  height: 160px;
+}
+.dc-grid .dc-grid-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.dc-grid .dc-grid-caption {
+  height: auto;
+  padding: 10px 1px;
+  position: static;
+}
+
+.dc-grid-searchresults .dc-grid-item {
+  -webkit-flex: 1 0 150px;
+  flex: 1 0 150px;
+  min-width: 150px;
+  width: 20%;
+  margin: 0 10px;
+}
+.dc-grid-searchresults .dc-grid-pic {
+  height: 150px;
+}
+.dc-grid-searchresults .dc-grid-caption {
+  padding: 0;
+}
+.dc-grid-searchresults h4 {
+  font-size: 1em;
+  line-height: 1.625em;
+  margin-top: 0.8125em;
+  margin-bottom: 0.8125em;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  font-family: "VestulaSemibold";
+  font-weight: normal;
+}
+
+.dc-grid-collectiongroups .dc-grid-item {
+  min-width: 100px;
+  width: 12%;
+}
+.dc-grid-collectiongroups .dc-grid-pic {
+  height: 100px;
+}
+.dc-grid-collectiongroups .dc-grid-caption {
+  padding: 0;
+}
+.dc-grid-collectiongroups h4 {
+  font-size: 1em;
+  line-height: 1.625em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: "VestulaSemibold";
+  font-weight: normal;
+}
+
+.dc-grid-compound {
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  margin: 0;
+  margin-top: 0em;
+  margin-bottom: 1.625em;
+  padding-top: 1.625em;
+  padding-bottom: 0.8125em;
+}
+.dc-grid-compound .dc-grid-item {
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+  min-width: 100px;
+  width: 15%;
+  margin: 0 4px;
+}
+.dc-grid-compound .dc-grid-pic {
+  height: 120px;
+}
+.dc-grid-compound h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+  font-size: 1em;
+  line-height: 1.625em;
+  font-weight: normal;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.dc-grid-related {
+  -webkit-justify-content: right;
+  justify-content: right;
+}
+.dc-grid-related .dc-grid-item {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+  min-width: 80px;
+  max-width: 160px;
+  width: 10%;
+}
+.dc-grid-related .dc-grid-pic {
+  height: 80px;
+}
+
 html {
   font-size: 100%;
   line-height: 1.625em;
