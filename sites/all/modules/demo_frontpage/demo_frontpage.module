@@ -17,6 +17,9 @@ function demo_frontpage_block_info() {
   $blocks['demo_collection_groups_block'] = array(
     'info' => t('Demo collection groups'),
   );
+  $blocks['demo_collection_images'] = array(
+    'info' => t('Demo collection images'),
+  );
   return $blocks;
 }
 
@@ -289,6 +292,9 @@ function demo_frontpage_block_view($delta = '') {
     case 'demo_collection_groups_block':
       $block['content'] = demo_collection_groups_block_content();
       break;
+    case 'demo_collection_images':
+      $block['content'] = demo_frontpage_block_images_content();
+      break;
   }
   return $block;
 }
@@ -315,4 +321,21 @@ function demo_frontpage_theme() {
         'variables' => array('items' => NULL,),
       ),
   );
+}
+
+function demo_frontpage_block_images_content(){
+  if (strpos(arg(2), 'collection:') !== false) {
+      $pid = arg(2);
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'collection')
+        ->propertyCondition('status', NODE_PUBLISHED)
+        ->fieldCondition('field_pid', 'value', $pid, '=')
+        ->range(0, 1);
+      $result = $query->execute();
+      if (isset($result['node'])) {
+        $nids = array_keys($result['node']);
+        $nodes= entity_load('node', $nids);
+      }
+    }
 }

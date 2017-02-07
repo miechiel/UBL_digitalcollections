@@ -57,6 +57,8 @@ function features_demo_november_2016_node_export_features_default() {
           ),
         ),
       ),
+      \'field_intro_image\' => array(),
+      \'field_intro_image_link\' => array(),
       \'field_pid\' => array(
         \'und\' => array(
           array(

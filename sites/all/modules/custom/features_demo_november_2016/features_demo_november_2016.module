@@ -5,3 +5,16 @@
  */
 
 include_once 'features_demo_november_2016.features.inc';
+
+
+/**
+ * Implements hook_block_info().
+ */
+function custom_block_block_info() {
+  $blocks = array();
+  $blocks['my_block'] = array(
+    'info' => t('My Custom Block'),
+  );
+
+  return $blocks;
+}

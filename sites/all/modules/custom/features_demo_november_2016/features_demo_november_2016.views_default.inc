@@ -33,21 +33,21 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Islandora Solr: dc.title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['dc.title']['id'] = 'dc.title';
   $handler->display->display_options['fields']['dc.title']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['dc.title']['field'] = 'dc.title';
   $handler->display->display_options['fields']['dc.title']['label'] = '';
   $handler->display->display_options['fields']['dc.title']['element_label_colon'] = FALSE;
-  /* Field: Islandora Solr: fgs_label_t */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['fgs_label_t']['id'] = 'fgs_label_t';
   $handler->display->display_options['fields']['fgs_label_t']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['fgs_label_t']['field'] = 'fgs_label_t';
-  /* Field: Islandora Solr: PID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['PID']['id'] = 'PID';
   $handler->display->display_options['fields']['PID']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['PID']['field'] = 'PID';
-  /* Contextual filter: Islandora Solr: RELS_EXT_isMemberOfCollection_uri_mt */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['id'] = 'RELS_EXT_isMemberOfCollection_uri_mt';
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['table'] = 'islandora_solr';
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['field'] = 'RELS_EXT_isMemberOfCollection_uri_mt';
@@ -57,7 +57,7 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['RELS_EXT_isMemberOfCollection_uri_mt']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Islandora Solr: dc.title */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['dc.title']['id'] = 'dc.title';
   $handler->display->display_options['filters']['dc.title']['table'] = 'islandora_solr';
   $handler->display->display_options['filters']['dc.title']['field'] = 'dc.title';
@@ -82,7 +82,7 @@ function features_demo_november_2016_views_default_views() {
   );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Islandora Solr: dc.title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['dc.title']['id'] = 'dc.title';
   $handler->display->display_options['fields']['dc.title']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['dc.title']['field'] = 'dc.title';
@@ -90,12 +90,12 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['fields']['dc.title']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Islandora Solr: dc.title */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['dc.title']['id'] = 'dc.title';
   $handler->display->display_options['filters']['dc.title']['table'] = 'islandora_solr';
   $handler->display->display_options['filters']['dc.title']['field'] = 'dc.title';
   $handler->display->display_options['filters']['dc.title']['group'] = 1;
-  /* Filter criterion: Islandora Solr: RELS_EXT_isMemberOfCollection_uri_mt */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['RELS_EXT_isMemberOfCollection_uri_mt']['id'] = 'RELS_EXT_isMemberOfCollection_uri_mt';
   $handler->display->display_options['filters']['RELS_EXT_isMemberOfCollection_uri_mt']['table'] = 'islandora_solr';
   $handler->display->display_options['filters']['RELS_EXT_isMemberOfCollection_uri_mt']['field'] = 'RELS_EXT_isMemberOfCollection_uri_mt';
@@ -124,14 +124,14 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'There are no collection items.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Islandora Solr: PID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['PID']['id'] = 'PID';
   $handler->display->display_options['fields']['PID']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['PID']['field'] = 'PID';
   $handler->display->display_options['fields']['PID']['label'] = '';
   $handler->display->display_options['fields']['PID']['exclude'] = TRUE;
   $handler->display->display_options['fields']['PID']['element_label_colon'] = FALSE;
-  /* Field: Islandora Solr: fgs_label_t */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['fgs_label_t']['id'] = 'fgs_label_t';
   $handler->display->display_options['fields']['fgs_label_t']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['fgs_label_t']['field'] = 'fgs_label_t';
@@ -148,7 +148,7 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Islandora Solr: fedora_datastream_latest_JPG_MIMETYPE_mt */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['fedora_datastream_latest_JPG_MIMETYPE_mt']['id'] = 'fedora_datastream_latest_JPG_MIMETYPE_mt';
   $handler->display->display_options['filters']['fedora_datastream_latest_JPG_MIMETYPE_mt']['table'] = 'islandora_solr';
   $handler->display->display_options['filters']['fedora_datastream_latest_JPG_MIMETYPE_mt']['field'] = 'fedora_datastream_latest_JPG_MIMETYPE_mt';
@@ -167,14 +167,14 @@ function features_demo_november_2016_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Islandora Solr: PID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['PID']['id'] = 'PID';
   $handler->display->display_options['fields']['PID']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['PID']['field'] = 'PID';
   $handler->display->display_options['fields']['PID']['label'] = '';
   $handler->display->display_options['fields']['PID']['exclude'] = TRUE;
   $handler->display->display_options['fields']['PID']['element_label_colon'] = FALSE;
-  /* Field: Islandora Solr: fgs_label_t */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['fgs_label_t']['id'] = 'fgs_label_t';
   $handler->display->display_options['fields']['fgs_label_t']['table'] = 'islandora_solr';
   $handler->display->display_options['fields']['fgs_label_t']['field'] = 'fgs_label_t';
