@@ -335,7 +335,53 @@ function demo_frontpage_block_images_content(){
       $result = $query->execute();
       if (isset($result['node'])) {
         $nids = array_keys($result['node']);
-        $nodes= entity_load('node', $nids);
+        $node= array_shift(entity_load('node', $nids));
+        $items = array();
+        $items['button-more']['text'] = t('Show all items');
+        $items['button-more']['link'] =  '/islandora/search?type=dismax&islandora_solr_search_navigation=0&f[0]=RELS_EXT_isMemberOfCollection_uri_ms:%22info\:fedora\/'. str_replace(':', '\:' , $pid).'%22';
+
+        $i = 0;
+        foreach ($node->field_intro_image['und'] as $image_file){
+          if ($image_file) {
+            if (isset($image_file['uri'])) {
+              $image_path = $image_file['uri'];
+            }
+            $desc = '';
+            $link = '';
+            $title ='';
+            if(!empty($node->field_intro_image_link['und'][$i]) ){
+              $link = $node->field_intro_image_link['und'][$i];
+              $desc = $link['title'];
+              $link = $link['url'];
+              $title =$link['title'];
+            }
+            $image = theme('image',array(
+              'path' => ($image_path),
+              'title' => $desc,
+              'attributes' => array('class' => 'dc-object-fit'),
+            ));
+
+            $items[$i] = array(
+              '#tree' => TRUE,
+              'image' => array(
+                '#prefix' => '<li class="dc-grid-item"><a href="'.
+                  $link.'"><div class="dc-grid-pic">',
+                '#type' => 'markup',
+                '#markup' => $image,
+                '#suffix' => '</div>',
+              ),
+              'title' => array(
+                '#prefix' => '<div class="dc-grid-caption">',
+                '#type' => 'markup',
+                '#markup' => '<h4>'.$title.'</h4><div>'.$desc.'</div>',
+                '#suffix' => '</a></li>',
+              ),
+            );
+          }
+          $i++;
+        }
+
+        return theme('demo_webexpositions_block_content', array('items' => $items));
       }
     }
 }
